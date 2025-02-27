@@ -1,0 +1,5 @@
+name: register
+path: register
+view: register
+theme: uesio/core.default
+title: Landing Page

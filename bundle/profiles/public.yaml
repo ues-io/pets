@@ -1,0 +1,4 @@
+name: public
+permissionSets:
+  - ben/pets.public
+  - uesio/core.public

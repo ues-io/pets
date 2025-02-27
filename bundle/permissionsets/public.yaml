@@ -1,0 +1,26 @@
+name: public
+named: {}
+views:
+  ben/pets.register: true
+collections:
+  uesio/crm.lead:
+    read: true
+    create: true
+    edit: false
+    delete: false
+    modifyall: false
+    viewall: false
+    fields: {}
+routes:
+  ben/pets.register: true
+files: {}
+bots: {}
+integrationActions: {}
+allowallbots: false
+allowallcollections: false
+allowallviews: false
+allowallroutes: false
+allowallfiles: false
+allowallintegrationactions: false
+modifyallrecords: false
+viewallrecords: false

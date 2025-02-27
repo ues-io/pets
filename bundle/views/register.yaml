@@ -1,0 +1,84 @@
+name: register
+definition:
+  wires:
+    lead:
+      collection: uesio/crm.lead
+      fields:
+        uesio/crm.firstname:
+        uesio/crm.industry:
+        uesio/core.updatedby:
+        uesio/core.updatedat:
+        uesio/core.createdby:
+        uesio/core.createdat:
+        uesio/core.owner:
+      init:
+        create: true
+        query: false
+  components:
+    - uesio/io.viewlayout:
+        uesio.variant: uesio/sitekit.default
+        header:
+        content:
+          - uesio/sitekit.section_hero:
+              title: Register your pet
+              subtitle: We're so glad you're part of our pet showcase!
+              uesio.styleTokens:
+                title:
+                  - text-rose-500
+          - uesio/sitekit.section:
+              innerVariant: uesio/sitekit.section_inner_content
+              content:
+                - uesio/io.box:
+                    uesio.styleTokens:
+                      root:
+                        - grid
+                        - justify-center
+                        - grid-cols-[minmax(0px,400px)]
+                    components:
+                      - uesio/io.item:
+                          wire: lead
+                          mode: EDIT
+                          components:
+                            - uesio/io.box:
+                                uesio.display:
+                                  - type: recordIsNew
+                                components:
+                                  - uesio/io.box:
+                                      components:
+                                        - uesio/io.field:
+                                            fieldId: uesio/crm.firstname
+                                            label: Pet Name
+                                        - uesio/io.field:
+                                            fieldId: uesio/crm.industry
+                                            label: Pet Breed
+                                  - uesio/io.box:
+                                      components:
+                                        - uesio/io.button:
+                                            uesio.styleTokens:
+                                              root:
+                                                - w-full
+                                                - mt-4
+                                            uesio.variant: uesio/sitekit.primary_dark
+                                            text: Submit
+                                            signals:
+                                              - signal: wire/SAVE
+                                uesio.styleTokens:
+                                  root:
+                                    - p-10
+                                    - border-1
+                                    - rounded
+                                    - border-slate-300
+                                    - -mt-40
+                                    - bg-white
+                            - uesio/io.box:
+                                uesio.display:
+                                  - type: recordIsNotNew
+                                components:
+                                  - uesio/io.text:
+                                      text: Thank you so much for submitting your information!
+              uesio.styleTokens:
+                root:
+                  - border-t-1
+                  - border-slate-300
+                  - mt-20
+        footer:

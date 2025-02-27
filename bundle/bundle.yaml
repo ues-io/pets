@@ -1,0 +1,12 @@
+name: ben/pets
+homeRoute: ben/pets.register
+publicProfile: ben/pets.public
+dependencies:
+  uesio/core:
+    version: v0.0.1
+  uesio/crm:
+    version: v1.3.4
+  uesio/io:
+    version: v0.0.1
+  uesio/sitekit:
+    version: v0.0.1
