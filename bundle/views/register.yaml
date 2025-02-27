@@ -20,7 +20,7 @@ definition:
         header:
         content:
           - uesio/sitekit.section_hero:
-              title: Register your pet
+              title: Register your awesome pet
               subtitle: We're so glad you're part of our pet showcase!
               uesio.styleTokens:
                 title:

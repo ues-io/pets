@@ -10,6 +10,7 @@ jobs:
     environment: prod
     name: Package ues.io bundle
     steps:
+      - uses: actions/checkout@v4
       - name: Setup Uesio CLI Symlink
         shell: bash
         run: |
@@ -30,3 +31,21 @@ jobs:
         run: |
           # Login to uesio instance
           uesio login
+
+          # Set the current workspace
+          uesio work -n=dev
+
+          # Deploy this code to the workspace
+          uesio deploy
+
+          # Create a new patch bundle
+          patchResult=$(uesio bundle create -t=patch)
+
+          # Extract version number from patchResult variable using grep
+          version=$(echo "$patchResult" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
+
+          # Set the active site to prod
+          uesio siteadmin -n=prod
+
+          # Update the prod site to the newly created version
+          uesio site use -b=$version
