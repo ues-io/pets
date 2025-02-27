@@ -1,0 +1,22 @@
+name: Main Branch Build
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  package-bundle:
+    runs-on: ubuntu-latest
+    name: Package ues.io bundle
+    steps:
+      - name: Setup Uesio CLI Symlink
+        shell: bash
+        run: |
+          # Symlink the Uesio CLI for subsequent use
+          wget -q https://github.com/ues-io/uesio/releases/download/v0.7.0/uesio-linux
+          chmod +x uesio-linux
+          sudo ln -s $PWD/uesio-linux /usr/local/bin/uesio
+      - name: Run help command
+        shell: bash
+        run: |
+          uesio help
