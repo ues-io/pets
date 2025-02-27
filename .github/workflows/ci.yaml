@@ -7,6 +7,7 @@ on:
 jobs:
   package-bundle:
     runs-on: ubuntu-latest
+    environment: prod
     name: Package ues.io bundle
     steps:
       - name: Setup Uesio CLI Symlink
@@ -20,3 +21,12 @@ jobs:
         shell: bash
         run: |
           uesio help
+      - name: Deploy
+        shell: bash
+        env:
+          UESIO_CLI_USERNAME: ${{ secrets.UESIO_CLI_USERNAME || '' }}
+          UESIO_CLI_PASSWORD: ${{ secrets.UESIO_CLI_PASSWORD }}
+          UESIO_CLI_HOST: ${{ vars.UESIO_CLI_HOST }}
+        run: |
+          # Login to uesio instance
+          uesio login
